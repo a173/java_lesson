@@ -1,4 +1,7 @@
 **/.idea
 **/lesson_1.iml
 **/out
-**/DS_Store
+**/.DS_Store
+**/.git
+**/.gitignore
+**/out/production/lesson_1/
