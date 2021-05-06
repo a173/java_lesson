@@ -1,3 +1,6 @@
+/.idea
+/.DS_Store
+/.gitignore
 **/.idea
 **/lesson_1.iml
 **/out
