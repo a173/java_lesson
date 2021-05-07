@@ -17,7 +17,7 @@ public class LogParser implements IPQuery {
         String buf;
         BufferedReader reader;
         String[] str;
-        for (File file : logDir.toFile().listFiles()) {
+        for (File file : Objects.requireNonNull(logDir.toFile().listFiles())) {
             if (Pattern.compile("\\w*\\.log").matcher(file.getName()).matches()) {
                 FileReader localFile = new FileReader(file.getAbsolutePath());
                 reader = new BufferedReader(localFile);
@@ -74,13 +74,13 @@ public class LogParser implements IPQuery {
     public Set<String> getIPsForEvent(Event event, Date after, Date before) {
         Date afterTmp = setDateMin(after);
         Date beforeTmp = setDateMax(before);
-        return array.stream().filter(s -> s.get_event().equals(event.toString())).filter(s -> s.get_date().getTime() >= afterTmp.getTime() && s.get_date().getTime() <= beforeTmp.getTime()).map(Log::get_ip).collect(Collectors.toSet());
+        return array.stream().filter(s -> s.get_event().equals(event)).filter(s -> s.get_date().getTime() >= afterTmp.getTime() && s.get_date().getTime() <= beforeTmp.getTime()).map(Log::get_ip).collect(Collectors.toSet());
     }
 
     @Override
     public Set<String> getIPsForStatus(Status status, Date after, Date before) {
         Date afterTmp = setDateMin(after);
         Date beforeTmp = setDateMax(before);
-        return array.stream().filter(s -> s.get_status().equals(status.toString())).filter(s -> s.get_date().getTime() >= afterTmp.getTime() && s.get_date().getTime() <= beforeTmp.getTime()).map(Log::get_ip).collect(Collectors.toSet());
+        return array.stream().filter(s -> s.get_status().equals(status)).filter(s -> s.get_date().getTime() >= afterTmp.getTime() && s.get_date().getTime() <= beforeTmp.getTime()).map(Log::get_ip).collect(Collectors.toSet());
     }
 }

@@ -10,11 +10,10 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
         try {
-            System.out.println("sdf");
             LogParser log = new LogParser(Paths.get("."));
             log.CreateFile(Paths.get("."));
             DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-            System.out.println(log.getNumberOfUniqueIPs(df.parse("30.08.2012 16:08:14"), df.parse("29.2.2028 5:4:7")));
+//            System.out.println(log.getNumberOfUniqueIPs(df.parse("30.08.2012 16:08:14"), df.parse("29.2.2028 5:4:7")));
         }
         catch (IOException e) {
             e.printStackTrace();
